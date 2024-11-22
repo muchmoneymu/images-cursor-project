@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 显示批量下载按钮
                 if (compressedImages.length > 1) {
                     batchActions.style.display = 'block';
+                    updateImageCount(compressedImages.length);
                 }
             }
             
@@ -161,6 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (compressedImages.length <= 1) {
             batchActions.style.display = 'none';
+        } else {
+            updateImageCount(compressedImages.length);
         }
         
         if (compressedImages.length === 0) {
@@ -259,6 +262,14 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             showMessage('批量下载失败，请重试', 'error');
             console.error('批量下载错误：', error);
+        }
+    }
+
+    // 添加更新图片计数的函数
+    function updateImageCount(count) {
+        const imageCount = document.querySelector('.image-count');
+        if (imageCount) {
+            imageCount.textContent = `已选择 ${count} 张图片`;
         }
     }
 }); 

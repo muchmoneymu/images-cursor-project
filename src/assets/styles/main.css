@@ -79,18 +79,27 @@ body {
 .main-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1rem;
+    min-height: calc(100vh - 60px);
 }
 
 /* 上传区域样式 */
 .upload-section {
     margin-top: 80px;
-    padding: 2rem;
+    padding: 1rem;
+}
+
+.compression-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
 .upload-area {
-    max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
     background: white;
     border: 2px dashed var(--primary-color);
     border-radius: var(--border-radius);
@@ -225,9 +234,10 @@ body {
 .compression-results {
     margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+    gap: 1.5rem;
     padding: 1rem;
+    justify-content: center;
 }
 
 .image-preview-item {
@@ -235,18 +245,27 @@ body {
     border-radius: var(--border-radius);
     padding: 1rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+    width: 280px;
 }
 
 .image-preview-item img {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: var(--border-radius);
-    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+    padding: 0.5rem;
 }
 
 .image-info {
-    margin: 1rem 0;
+    flex: 1;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .image-name {
@@ -266,7 +285,8 @@ body {
 .image-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    padding-top: 0.5rem;
+    margin-top: auto;
 }
 
 .download-btn, .delete-btn {
@@ -330,9 +350,15 @@ body {
 /* 响应式调整 */
 @media (max-width: 768px) {
     .compression-results {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+        padding: 0.5rem;
     }
-} 
+
+    .image-preview-item {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
 
 /* 上传进度显示 */
 .upload-progress {
@@ -373,10 +399,22 @@ body {
 
 /* 在现有的 CSS 中添加批量操作按钮样式 */
 .batch-actions {
-    max-width: 800px;
-    margin: 1rem auto;
-    text-align: right;
-    padding: 0 1rem;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+    padding: 1rem;
+    margin: 0;
+}
+
+.batch-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.image-count {
+    color: #666;
+    font-size: 0.9rem;
 }
 
 .batch-download-btn {
@@ -389,9 +427,10 @@ body {
     padding: 0.75rem 1.5rem;
     border-radius: var(--border-radius);
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .batch-download-btn:hover {
@@ -402,4 +441,74 @@ body {
 .batch-download-btn svg {
     width: 16px;
     height: 16px;
+} 
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+    .header {
+        position: sticky;
+    }
+
+    .nav-container {
+        padding: 0.75rem 1rem;
+    }
+
+    .upload-section {
+        margin-top: 1rem;
+        padding: 0.5rem;
+    }
+
+    .compression-container {
+        margin: 0;
+    }
+
+    .upload-area {
+        padding: 2rem 1rem;
+    }
+
+    .upload-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .upload-content p {
+        font-size: 0.9rem;
+    }
+
+    .batch-info {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .compression-results {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .image-preview-item {
+        margin: 0;
+    }
+}
+
+/* 平板设备优化 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .compression-results {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+    }
+
+    .upload-section {
+        margin-top: 60px;
+    }
+}
+
+/* 大屏幕优化 */
+@media (min-width: 1025px) {
+    .main-container {
+        padding: 2rem;
+    }
+
+    .compression-results {
+        grid-template-columns: repeat(3, 1fr);
+    }
 } 
