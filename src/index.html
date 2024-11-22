@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片压缩工具</title>
+    <link rel="stylesheet" href="assets/styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">图片压缩工具</div>
+            <div class="nav-links">
+                <a href="/" class="nav-link active">首页</a>
+                <a href="/history" class="nav-link">历史记录</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <section class="upload-section">
+            <div class="upload-area" id="dropZone">
+                <input type="file" id="fileInput" multiple accept="image/*" hidden>
+                <div class="upload-content">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 12L12 8M12 8L8 12M12 8V16M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" 
+                        stroke="#4A90E2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h2>点击或拖拽图片到这里</h2>
+                    <p>支持 JPG、PNG、GIF、WebP 格式</p>
+                    <button class="upload-btn">选择图片</button>
+                </div>
+            </div>
+            <div class="batch-actions" style="display: none;">
+                <button class="batch-download-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 16L4 17C4 18.6569 5.34315 20 7 20L17 20C18.6569 20 20 18.6569 20 17L20 16M16 12L12 16M12 16L8 12M12 16L12 4" 
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    批量下载
+                </button>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>高质量压缩</h3>
+                    <p>智能压缩算法，保证图片质量</p>
+                </div>
+                <div class="feature-card">
+                    <h3>多格式支持</h3>
+                    <p>支持主流图片格式转换</p>
+                </div>
+                <div class="feature-card">
+                    <h3>批量处理</h3>
+                    <p>支持多图片同时压缩</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="js/imageCompressor.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
